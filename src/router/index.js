@@ -62,7 +62,28 @@ export const constantRouterMap = [
         component: () => import('../views/hospset/add'),
         meta: { title: '编辑', noCache: true },
         hidden: true
+      },
+      {
+        path: 'hosp/list',
+        name: '医院列表',
+        component: () => import('../views/hosp/list'),
+        meta: { title: '医院列表', icon: 'table' }
+      },
+      {
+        path: 'hospital/show/:id',
+        name: '查看',
+        component: () => import('@/views/hosp/show'),
+        meta: { title: '查看', noCache: true },
+        hidden: true
+      },
+      {
+        path: 'hospital/schedule/:hoscode',
+        name: '排班',
+        component: () => import('@/views/hosp/schedule'),
+        meta: { title: '排班', noCache: true },
+        hidden: true
       }
+
     ]
   },
 
@@ -79,6 +100,53 @@ export const constantRouterMap = [
         name: '数据字典',
         component: () => import('../views/dict/list'),
         meta: { title: '数据字典', icon: 'table' }
+      }
+    ]
+  },
+
+  {
+    path: '/user',
+    component: Layout,
+    redirect: '/user/userInfo/list',
+    name: 'userInfo',
+    meta: { title: '用户管理', icon: 'table' },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'userInfo/list',
+        name: '用户列表',
+        component: () =>import('@/views/user/userInfo/list'),
+        meta: { title: '用户列表', icon: 'table' }
+      },
+      {
+        path: 'userInfo/show/:id',
+        name: '用户查看',
+        component: () =>import('@/views/user/userInfo/show'),
+        meta: { title: '用户查看' },
+        hidden: true
+      },
+      {
+        path: 'userInfo/authList',
+        name: '认证审批列表',
+        component: () =>import('@/views/user/userInfo/authList'),
+        meta: { title: '认证审批列表', icon: 'table' }
+      }
+    ]
+  },
+
+  {
+    path: '/statistics',
+    component: Layout,
+    redirect: '/statistics/order/index',
+    name: 'BasesInfo',
+    meta: { title: '统计管理', icon: 'table' },
+    alwaysShow: true,
+    children: [
+      {
+        path: 'order/index',
+        name: '预约统计',
+        component: () =>import('@/views/statistics/order/index'),
+        meta: { title: '预约统计' }
       }
     ]
   },
